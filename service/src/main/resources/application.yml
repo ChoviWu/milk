@@ -1,0 +1,50 @@
+server:
+  port: 80
+  context-path: /
+
+spring:
+  datasource:
+     name: wuznuan
+     url: jdbc:mysql://@jdbc.url@/@jdbc.db@?useUnicode=true&characterEncoding=UTF-8
+     username: @jdbc.user@
+     password: @jdbc.password@
+    # 使用druid数据源
+     type: com.alibaba.druid.pool.DruidDataSource
+     driver-class-name: com.mysql.jdbc.Driver
+#    name: test
+     filters: stat
+     maxActive: 20
+     initialSize: 1
+     maxWait: 60000
+     minIdle: 1
+     timeBetweenEvictionRunsMillis: 60000
+     minEvictableIdleTimeMillis: 300000
+     validationQuery: select 'x'
+     testWhileIdle: true
+     testOnBorrow: false
+     testOnReturn: false
+     poolPreparedStatements: true
+     maxOpenPreparedStatements: 20
+     minimum-idle: 0
+     sql-script-encoding: UTF-8
+
+  aop:
+    auto: true
+    proxy-target-class: true
+
+  dubbo:
+    application:
+      name: provider #应用名称
+    registry: #注册中心地址  多个地址用 数组标识
+      address: zookeeper://@dubbo.url@
+    protocol: #协议名称
+      name: dubbo
+      port: @dubbo.host@ #协议端口
+    scan:   com.xw.milk.service #服务类包目录
+
+mybatis:
+  type-aliases-package: com.xw.milk.model
+  mapper-locations: classpath:mapper/*.xml
+  type-handlers-package: com.xw.milk.mapper
+  config: classpath*:mybatis-config.xml
+

@@ -1,0 +1,17 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+
+
+### Maven template
+pom.xml
+web.iml
+mvnw
+mvnw.cmd
+.mvn
+
