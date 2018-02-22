@@ -24,5 +24,11 @@ public class IndexController {
         return userService.selectAll();
     }
 
+    @RequestMapping("/list")
+    public Object getList(Paginator p){
+
+        return userService.selectAll();
+    }
+
 
 }

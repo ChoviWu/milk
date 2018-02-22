@@ -17,7 +17,7 @@ public class BasUser    implements Serializable {
     private String mobile;
 
     /**
-     * 用户类型
+     * 用户类型 1 客户 0 普通用户
      */
     private String type;
 

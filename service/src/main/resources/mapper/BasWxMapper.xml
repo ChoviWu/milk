@@ -25,4 +25,10 @@
     country, head_img_url as headImgUrl, remark, groupid,
     tagid_list as tagidList
   </sql>
+
+  <select id="getOneByOpenId" parameterType="String" resultType="BasWx">
+    SELECT <include refid="Base_Column_List"/>
+    FROM bas_wx WHERE open_id = #{openId}
+
+  </select>
 </mapper>

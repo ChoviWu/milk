@@ -21,4 +21,40 @@
     -->
     id, open_id as openId, username, mobile, type, addtime, last_login_ip as lastLoginIp, last_login_time as lastLoginTime, addip
   </sql>
+
+  <select id="getList" parameterType="Map" resultType="BasUser">
+    SELECT <include refid="Base_Column_List"/>
+    FROM  bas_user
+    <where>
+      <if test="username!=null and username!=''">
+        and  username = #{username}
+      </if>
+     <if test="mobile!=null and mobile!=''">
+       and mobile = #{mobile}
+      </if>
+     <if test="type!=null and type!=''">
+       and type = #{type}
+      </if>
+    </where>
+  </select>
+  <!--修改用户类型-->
+  <update id="modifyUserType" parameterType="Map" >
+    UPDATE bas_user u set type = #{newType} where u.id = #{userId} and u.open_id = #{openId}
+  </update>
+
+  <!--注册用户-->
+
+  <insert id="registerUser" parameterType="map" keyProperty="id" useGeneratedKeys="true">
+    INSERT INTO bas_user(open_id ,type ,last_login_ip,last_login_time,addip)
+    VALUES (#{openId},#{type},#{ip},#{time},#{ip})
+  </insert>
+
+  <!--更新用户名-->
+  <update id="updateUserName" >
+    UPDATE bas_user u
+    <set>
+      u.username = #{username}
+    </set>
+    where u.id = #{userId}
+  </update>
 </mapper>
