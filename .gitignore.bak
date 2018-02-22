@@ -9,7 +9,7 @@ target/
 
 
 ### Maven template
-### pom.xml
+pom.xml
 web.iml
 mvnw
 mvnw.cmd
