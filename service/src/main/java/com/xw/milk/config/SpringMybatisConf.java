@@ -11,7 +11,7 @@ import java.util.Properties;
 @ConditionalOnClass(SqlSessionFactoryConfig.class)
 public class SpringMybatisConf {
 
-    private static String MAPPERPATH = "com.example.mapper";
+    private static String MAPPERPATH = "com.xw.milk.mapper";
 
 //    private static String SQLSESSIONBEAN = "sqlSessionFactory";
 

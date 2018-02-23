@@ -57,4 +57,19 @@
     </set>
     where u.id = #{userId}
   </update>
+
+  <select id="getUserByOpenId" parameterType="map" resultType="BasUserVO">
+    SELECT <include refid="Base_Column_List"/>
+    ,wx.groupid as groupId,wx.head_img_url as headImgUrl,wx.nick_name as nickName
+    from bas_user u LEFT JOIN bas_wx wx ON wx.open_id = u.open_id
+    <where>
+      <if test="openId!=null and openId!=''">
+        and open_id = #{openId}
+      </if>
+      <if test="id!=null and id>0">
+        and u.id = #{id}
+      </if>
+
+    </where>
+  </select>
 </mapper>

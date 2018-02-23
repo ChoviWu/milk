@@ -4,7 +4,10 @@ import com.xw.milk.common.PageList;
 import com.xw.milk.common.Paginator;
 import com.xw.milk.model.BasUser;
 import com.xw.milk.model.BasWx;
+import com.xw.milk.model.VO.BasUserVO;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
@@ -15,9 +18,15 @@ public interface BasUserService extends BaseService<BasUser> {
 
     PageList getList(Paginator p, Map map);
 
+    BasUser getOneByOpenId(String openId);
+
     Object updateUserType(Map map);
     //用户注册
-    Object doRegister(String openId, BasWx basWx);
+    Integer doRegister(String openId,String accessToken);
+
+    //查询用户信息
+    BasUserVO getUserByOpenId(String openId);
+
 
 
 }

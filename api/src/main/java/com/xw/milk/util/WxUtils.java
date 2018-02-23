@@ -32,10 +32,10 @@ public class WxUtils {
         return tmp.equals(signature);
     }
 
-    public static String getAccessToken(){
+    public static String getAccessToken(String appId,String appSecret){
         Map<String ,String > map = new HashMap();
-        map.put("appid",AppID);
-        map.put("secret",AppSecret);
+        map.put("appid",appId);
+        map.put("secret",appSecret);
         map.put("grant_type","client_credential");
         String response = HttpUtils.URLGet("https://api.weixin.qq.com/cgi-bin/token",map,"UTF-8");
         map.clear();

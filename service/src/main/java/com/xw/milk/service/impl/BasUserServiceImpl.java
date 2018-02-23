@@ -6,11 +6,17 @@ import com.xw.milk.common.PageList;
 import com.xw.milk.common.Paginator;
 import com.xw.milk.mapper.BasUserMapper;
 import com.xw.milk.mapper.BasWxMapper;
+import com.xw.milk.mapper.SysConfigMapper;
 import com.xw.milk.model.BasUser;
 import com.xw.milk.model.BasWx;
+import com.xw.milk.model.VO.BasUserVO;
 import com.xw.milk.service.BasUserService;
+import com.xw.milk.service.BasWxService;
 import com.xw.milk.service.BaseServiceImpl;
+import com.xw.milk.tools.HttpUtils;
 import com.xw.milk.util.AssertUtil;
+import com.xw.milk.util.JsonUtils;
+import com.xw.milk.util.WxUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
@@ -29,12 +35,20 @@ public class BasUserServiceImpl extends BaseServiceImpl<BasUser> implements BasU
     private BasUserMapper userMapper;
     @Autowired
     private BasWxMapper wxMapper;
+    @Autowired
+    private SysConfigMapper configMapper;
 
-    @Override
     public PageList getList(Paginator p, Map map) {
         PageHelper.startPage(p.getPageNum(),p.getPageSize());
         List list = userMapper.getList(map);
         return new PageList(list);
+    }
+
+    @Override
+    public BasUser getOneByOpenId(String openId) {
+        BasUser user = new BasUser();
+        user.setOpenId(openId);
+        return userMapper.selectOne(user);
     }
 
     /**
@@ -48,9 +62,14 @@ public class BasUserServiceImpl extends BaseServiceImpl<BasUser> implements BasU
     }
 
     @Override
-    public Object doRegister(String openId, BasWx basWx) {
+    public Integer doRegister(String openId,String accessToken) {
         BasWx wx = wxMapper.getOneByOpenId(openId);
         AssertUtil.isTrue(wx==null,"");
+        //拉去用户资料
+        BasWx wxInfo = JsonUtils.json2Object(HttpUtils.URLGet("https://api.weixin.qq.com/sns/userinfo?access_token="
+                +accessToken+"&openid="+openId+"&lang=zh_CN",null,"UTF-8"),BasWx.class);
+        //同步插入微信表
+        this.insertWx(wxInfo);
         //TODO 注册
         Map map = new HashMap();
         map.put("openId",openId);
@@ -60,14 +79,20 @@ public class BasUserServiceImpl extends BaseServiceImpl<BasUser> implements BasU
         Integer userId = userMapper.registerUser(map);
 
         //更新用户名
-        AssertUtil.isTrue(userMapper.updateUserName("Xwry"+userId,userId)==1,"insert_error");
-
-
+        AssertUtil.isTrue(userMapper.updateUserName("xingwang-"+userId,userId)==1,"insert_error");
 
 
         return userId;
 
     }
+
+    @Override
+    public BasUserVO getUserByOpenId(String openId) {
+       Map map = new HashMap();
+       map.put("openId",openId);
+       return userMapper.getUserByOpenId(map);
+    }
+
 
     //同步插入wx表
 

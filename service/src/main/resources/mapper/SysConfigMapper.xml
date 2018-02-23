@@ -16,4 +16,8 @@
     -->
     id, param, value, remark
   </sql>
+
+  <select id="getValueByParam" parameterType="String" resultType="String">
+    SELECT value FROM  sys_config where param = #{param}
+  </select>
 </mapper>

@@ -1,6 +1,7 @@
 package com.xw.milk.mapper;
 
 import com.xw.milk.model.BasUser;
+import com.xw.milk.model.VO.BasUserVO;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -17,5 +18,5 @@ public interface BasUserMapper extends Mapper<BasUser> {
 
     int updateUserName(@Param("username") String username, @Param("userId") Integer userId);
 
-
+    BasUserVO getUserByOpenId(Map map);
 }

@@ -31,7 +31,7 @@ public class SqlSessionFactoryConfig {
     //mybatis配置
     private static String Mybatis_Config = "mybatis-config.xml";
     //类的别名
-    private static String ALIASMODEL = "com.example.model";
+    private static String ALIASMODEL = "com.xw.milk.model";
 
     private static String MAPPERXMLPATH = "mapper/*.xml";
 
