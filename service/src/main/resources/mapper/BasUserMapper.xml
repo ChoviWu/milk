@@ -19,10 +19,10 @@
     <!--
       WARNING - @mbggenerated
     -->
-    id, open_id as openId, username, mobile, type, addtime, last_login_ip as lastLoginIp, last_login_time as lastLoginTime, addip
+    id, open_id as openId, username,password,salt, mobile, type, addtime, last_login_ip as lastLoginIp, last_login_time as lastLoginTime, addip
   </sql>
 
-  <select id="getList" parameterType="Map" resultType="BasUser">
+  <select id="getList" parameterType="Map" resultType="com.xw.milk.model.BasUser">
     SELECT <include refid="Base_Column_List"/>
     FROM  bas_user
     <where>
@@ -58,7 +58,7 @@
     where u.id = #{userId}
   </update>
 
-  <select id="getUserByOpenId" parameterType="map" resultType="BasUserVO">
+  <select id="getUserByOpenId" parameterType="map" resultType="com.xw.milk.model.VO.BasUserVO">
     SELECT <include refid="Base_Column_List"/>
     ,wx.groupid as groupId,wx.head_img_url as headImgUrl,wx.nick_name as nickName
     from bas_user u LEFT JOIN bas_wx wx ON wx.open_id = u.open_id
@@ -86,4 +86,18 @@
     </choose>
   </where>
   </update>
+
+
+  <select id="getUserByMobile" parameterType="String" resultType="com.xw.milk.model.BasUser">
+    SELECT <include refid="Base_Column_List"/>
+    FROM bas_user u WHERE mobile = #{mobile}  limit 1
+  </select>
+
+
+  <select id="getUserByUserName" parameterType="String" resultType="com.xw.milk.model.BasUser">
+    SELECT <include refid="Base_Column_List"/>
+    FROM bas_user u WHERE username = #{username} limit 1
+  </select>
+
+
 </mapper>

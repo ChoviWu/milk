@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @MapperScan(basePackages = "com.xw.milk.mapper")
-@ComponentScan(basePackages = {"com.xw.milk.config","com.xw.milk.service"})
+@ComponentScan(basePackages = {"com.xw.milk.config","com.xw.milk.service" })
 @EnableScheduling//创建启动定时任务
 public class Application {
 

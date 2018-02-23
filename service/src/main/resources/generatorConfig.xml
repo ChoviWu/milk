@@ -45,7 +45,8 @@
 
       <!--<table tableName="bas_product" domainObjectName="BasProduct" ></table>-->
       <!--<table tableName="bas_user" domainObjectName="BasUser" ></table>-->
-      <table tableName="bas_wx" domainObjectName="BasWx" ></table>
+      <table tableName="bas_product_type" domainObjectName="BasProductType" ></table>
+      <table tableName="sys_log" domainObjectName="SysLog" ></table>
       <!--<table tableName="bus_order" domainObjectName="BusOrder" ></table>-->
       <!--<table tableName="bus_order_log" domainObjectName="BusOrderLog" ></table>-->
       <!--<table tableName="sys_config" domainObjectName="SysConfig" ></table>-->

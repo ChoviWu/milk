@@ -38,10 +38,12 @@
     <dubbo:application name="webClient" />
     <!-- 使用multicast广播注册中心暴露发现服务地址 -->
 
-    <dubbo:registry  protocol="zookeeper" address="localhost:2181" timeout="30000"/>
-    <dubbo:consumer version="1.0.0"/>
+    <dubbo:registry  protocol="zookeeper" address="localhost:2181"   timeout="30000"/>
+    <dubbo:consumer version="1.0.0" check="false" timeout="30000"/>
 
     <dubbo:annotation />
+
+    <!--<dubbo:service interface="com.xw.milk.service.BasProductService" ref="basProductService"/>-->
 
 </beans>
 	

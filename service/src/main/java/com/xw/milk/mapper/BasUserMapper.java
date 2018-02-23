@@ -21,4 +21,8 @@ public interface BasUserMapper extends Mapper<BasUser> {
     BasUserVO getUserByOpenId(Map map);
 
     int bindMobile(Map map);
+
+    BasUser getUserByMobile(@Param("mobile") String  mobile);
+
+    BasUser getUserByUserName(@Param("username")String username);
 }

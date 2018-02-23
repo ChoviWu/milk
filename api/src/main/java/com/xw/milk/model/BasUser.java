@@ -16,6 +16,10 @@ public class BasUser    implements Serializable {
      */
     private String mobile;
 
+    private String password;
+
+    private String salt;
+
     /**
      * 用户类型 1 客户 0 普通用户
      */
@@ -82,6 +86,21 @@ public class BasUser    implements Serializable {
         this.openId = openId;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
 
     /**
      * 获取用户名

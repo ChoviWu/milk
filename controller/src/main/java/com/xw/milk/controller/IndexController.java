@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,17 +24,15 @@ import java.util.List;
 @RequestMapping("/index")
 public class IndexController {
 
-    @Reference
+    @Reference(version = "1.0.0")
     private BasProductService productService;
     @Reference
     private BasUserService userService;
 
     @RequestMapping("")
-    public Object index( Model model,HttpServletRequest request){
+    public Object index( Model model,HttpServletRequest request,Paginator p){
 
-
-        List<BasProduct> list = productService.getList();
-        model.addAttribute("productList",list);
+        model.addAttribute("productList",productService.getList(p));
         Object obj = request.getSession().getAttribute("user");
         if(StringUtils.isEmpty(obj))
             return "redirect:/login";

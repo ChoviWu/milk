@@ -84,10 +84,15 @@ public class WxAuthController {
 
     }
 
+    /**
+     * 获取用户资料
+     * @param request
+     * @return
+     */
     @RequestMapping("/weixin/getInfo")
     public Object getInfo(HttpServletRequest request){
         String response = HttpUtils.URLGet("https://api.weixin.qq.com/cgi-bin/user/info?access_token="+ WxUtils.getAccessToken(
-                configService.getValueByParam("app_id"),configService.getValueByParam("app_secret"))+"&openid=OPENID&lang=zh_CN",null,"UTF-8");
+                configService.getValueByParam("app_id"),configService.getValueByParam("app_secret"))+"&openid="+String.valueOf(request.getSession().getAttribute("openId"))+"&lang=zh_CN",null,"UTF-8");
 
         return response;
     }
