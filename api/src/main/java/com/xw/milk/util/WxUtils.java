@@ -8,7 +8,7 @@ public class WxUtils {
     //配置微信公众号时填写的Token
     private static final String token = "yours";
     //公众号
-    public static final String AppID = "wxaa7a7cb5e278497c";
+    public static final String AppID = "yours";
     public static final  String AppSecret  = "yours";
     //小程序
     public static final  String AppProgram  = "yours";
