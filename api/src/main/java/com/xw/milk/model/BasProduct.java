@@ -28,7 +28,7 @@ public class BasProduct implements Serializable {
     private String productBrand;
 
     /**
-     * 商品折扣 price= price*discount*0.1
+     * 商品折扣 price= price-price*(10-discount)*0.01
      */
     @Column(name = "product_discount")
     private BigDecimal productDiscount;
@@ -44,6 +44,12 @@ public class BasProduct implements Serializable {
      */
     @Column(name = "product_price")
     private BigDecimal productPrice;
+
+    /**
+     * 类型
+     */
+    @Column(name = "type_id")
+    private Integer typeId;
 
     private String temp1;
 
@@ -105,6 +111,14 @@ public class BasProduct implements Serializable {
         this.productSize = productSize;
     }
 
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
     /**
      * 获取产品品牌
      *
@@ -124,18 +138,18 @@ public class BasProduct implements Serializable {
     }
 
     /**
-     * 获取商品折扣 price= price*discount*0.1
+     * 获取商品折扣 price= price-price*(10-discount)*0.01
      *
-     * @return product_discount - 商品折扣 price= price*discount*0.1
+     * @return product_discount - 商品折扣price= price-price*(10-discount)*0.01
      */
     public BigDecimal getProductDiscount() {
         return productDiscount;
     }
 
     /**
-     * 设置商品折扣 price= price*discount*0.1
+     * 设置商品折扣 price= price-price*(10-discount)*0.01
      *
-     * @param productDiscount 商品折扣 price= price*discount*0.1
+     * @param productDiscount 商品折扣price= price-price*(10-discount)*0.01
      */
     public void setProductDiscount(BigDecimal productDiscount) {
         this.productDiscount = productDiscount;

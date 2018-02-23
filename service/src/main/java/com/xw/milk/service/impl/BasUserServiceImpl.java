@@ -2,6 +2,7 @@ package com.xw.milk.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
+import com.xw.milk.common.Message;
 import com.xw.milk.common.PageList;
 import com.xw.milk.common.Paginator;
 import com.xw.milk.mapper.BasUserMapper;
@@ -16,7 +17,6 @@ import com.xw.milk.service.BaseServiceImpl;
 import com.xw.milk.tools.HttpUtils;
 import com.xw.milk.util.AssertUtil;
 import com.xw.milk.util.JsonUtils;
-import com.xw.milk.util.WxUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
@@ -81,7 +81,6 @@ public class BasUserServiceImpl extends BaseServiceImpl<BasUser> implements BasU
         //更新用户名
         AssertUtil.isTrue(userMapper.updateUserName("xingwang-"+userId,userId)==1,"insert_error");
 
-
         return userId;
 
     }
@@ -91,6 +90,21 @@ public class BasUserServiceImpl extends BaseServiceImpl<BasUser> implements BasU
        Map map = new HashMap();
        map.put("openId",openId);
        return userMapper.getUserByOpenId(map);
+    }
+
+    /**
+     * 绑定手机号
+     * @param mobile
+     * @param userId
+     * @return
+     */
+    @Override
+    public Object bindMobile(String mobile,Integer userId) {
+        Map map = new HashMap();
+        map.put("userId",userId);
+        map.put("mobile",mobile);
+        AssertUtil.isTrue(userMapper.bindMobile(map)==1,"update_error");//TODO
+        return Message.SUCCESS;
     }
 
 

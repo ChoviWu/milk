@@ -2,10 +2,13 @@ package com.xw.milk.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.xw.milk.common.Paginator;
+import com.xw.milk.model.BasProduct;
 import com.xw.milk.service.BasProductService;
 import com.xw.milk.service.BasUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,14 +24,19 @@ import java.util.List;
 public class IndexController {
 
     @Reference
-    BasProductService productService;
+    private BasProductService productService;
+    @Reference
+    private BasUserService userService;
 
     @RequestMapping("")
-    public Object index(HttpServletRequest request){
+    public Object index( Model model,HttpServletRequest request){
 
-        List list = productService.getList();
-        request.getSession().setAttribute("productList",list);
 
+        List<BasProduct> list = productService.getList();
+        model.addAttribute("productList",list);
+        Object obj = request.getSession().getAttribute("user");
+        if(StringUtils.isEmpty(obj))
+            return "redirect:/login";
         return "main/index";
     }
 }

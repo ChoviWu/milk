@@ -72,4 +72,18 @@
 
     </where>
   </select>
+
+  <update id="bindMobile" parameterType="Map">
+    UPDATE bas_user u SET  u.mobile = #{mobile}
+  <where>
+    <choose >
+     <when test="userId!=null and userId>0">
+        u.id = #{userId}
+     </when>
+      <when test="openId!=null and openId!=''">
+        u.open_id = #{openId}
+      </when>
+    </choose>
+  </where>
+  </update>
 </mapper>

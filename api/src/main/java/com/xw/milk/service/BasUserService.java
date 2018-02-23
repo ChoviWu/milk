@@ -27,6 +27,9 @@ public interface BasUserService extends BaseService<BasUser> {
     //查询用户信息
     BasUserVO getUserByOpenId(String openId);
 
+    //用户绑定手机号
+    Object bindMobile(String mobile,Integer userId);
+
 
 
 }

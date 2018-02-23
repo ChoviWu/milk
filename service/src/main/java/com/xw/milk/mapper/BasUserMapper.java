@@ -19,4 +19,6 @@ public interface BasUserMapper extends Mapper<BasUser> {
     int updateUserName(@Param("username") String username, @Param("userId") Integer userId);
 
     BasUserVO getUserByOpenId(Map map);
+
+    int bindMobile(Map map);
 }
