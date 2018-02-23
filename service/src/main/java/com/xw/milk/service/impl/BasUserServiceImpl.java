@@ -66,10 +66,10 @@ public class BasUserServiceImpl extends BaseServiceImpl<BasUser> implements BasU
         BasWx wx = wxMapper.getOneByOpenId(openId);
         AssertUtil.isTrue(wx==null,"");
         //拉去用户资料
-        BasWx wxInfo = JsonUtils.json2Object(HttpUtils.URLGet("https://api.weixin.qq.com/sns/userinfo?access_token="
+        Object wxInfo = JsonUtils.json2Object(HttpUtils.URLGet("https://api.weixin.qq.com/sns/userinfo?access_token="
                 +accessToken+"&openid="+openId+"&lang=zh_CN",null,"UTF-8"),BasWx.class);
         //同步插入微信表
-        this.insertWx(wxInfo);
+//        this.insertWx(wxInfo);
         //TODO 注册
         Map map = new HashMap();
         map.put("openId",openId);

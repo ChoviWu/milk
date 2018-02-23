@@ -7,7 +7,9 @@ import com.xw.milk.model.VO.BasUserVO;
 import com.xw.milk.service.BasUserService;
 import com.xw.milk.service.BasWxService;
 import com.xw.milk.service.ConfigService;
+import com.xw.milk.util.HttpUtils;
 import com.xw.milk.util.JsonUtils;
+import com.xw.milk.util.WxUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +30,7 @@ import java.util.logging.Logger;
 public class WxAuthController {
 
 
-    private static Logger logger = java.util.logging.Logger.getLogger("WxController");
+    private static Logger logger = java.util.logging.Logger.getLogger("WxAuthController");
 
     @Reference
     BasWxService wxService;
@@ -82,6 +84,13 @@ public class WxAuthController {
 
     }
 
+    @RequestMapping("/weixin/getInfo")
+    public Object getInfo(HttpServletRequest request){
+        String response = HttpUtils.URLGet("https://api.weixin.qq.com/cgi-bin/user/info?access_token="+ WxUtils.getAccessToken(
+                configService.getValueByParam("app_id"),configService.getValueByParam("app_secret"))+"&openid=OPENID&lang=zh_CN",null,"UTF-8");
+
+        return response;
+    }
 
 
 }

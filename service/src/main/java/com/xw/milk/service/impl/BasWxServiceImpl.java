@@ -64,18 +64,18 @@ public class BasWxServiceImpl  extends BaseServiceImpl<BasWx> implements BasWxSe
         return map;
     }
 
-    public String getAccessToken(){
-        Map<String ,String > map = new HashMap();
-        map.put("appid",appid);
-        map.put("secret",appsecret);
-        map.put("grant_type","client_credential");
-        String response = HttpUtils.URLGet("https://api.weixin.qq.com/cgi-bin/token",map,"UTF-8");
-        map.clear();
-        map = JsonUtils.json2Map(response);
-        String accessToken = map.get("access_token");
-        System.out.println(accessToken);
-        return accessToken;
-    }
+//    public String getAccessToken(){
+//        Map<String ,String > map = new HashMap();
+//        map.put("appid",appid);
+//        map.put("secret",appsecret);
+//        map.put("grant_type","client_credential");
+//        String response = HttpUtils.URLGet("https://api.weixin.qq.com/cgi-bin/token",map,"UTF-8");
+//        map.clear();
+//        map = JsonUtils.json2Map(response);
+//        String accessToken = map.get("access_token");
+//        System.out.println(accessToken);
+//        return accessToken;
+//    }
 
 
 

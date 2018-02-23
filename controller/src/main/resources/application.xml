@@ -15,7 +15,7 @@
 
     <task:annotation-driven/>
     <!-- @Controller层的上下文组件自动扫描注入 -->
-    <context:component-scan base-package="com.xw.milk.service.impl,com.xw.milk.controller" use-default-filters="false">
+    <context:component-scan base-package="com.xw.milk.service,com.xw.milk.controller" use-default-filters="false">
         <context:include-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller" />
         <context:include-filter type="annotation"
