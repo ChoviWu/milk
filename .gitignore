@@ -1,7 +1,8 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
-api/
+api/src/main/java/com/xw/milk/
+service/src/main/resources/generatorConfig.xml
 ### IntelliJ IDEA ###
 .idea
 *.iws
