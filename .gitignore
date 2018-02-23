@@ -1,7 +1,7 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
-
+api/
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -11,6 +11,7 @@ target/
 ### Maven template
 ### pom.xml
 web.iml
+
 mvnw
 mvnw.cmd
 .mvn

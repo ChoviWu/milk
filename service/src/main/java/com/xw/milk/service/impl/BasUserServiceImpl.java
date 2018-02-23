@@ -37,7 +37,7 @@ public class BasUserServiceImpl extends BaseServiceImpl<BasUser> implements BasU
         return new PageList(list);
     }
 
-    /**\
+    /**
      * 修改用户类型
      * @param map
      * @return
