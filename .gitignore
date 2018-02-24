@@ -4,6 +4,9 @@ target/
 api/target/
 controller/target/
 service/target/
+=======
+api/src/main/java/com/xw/milk/
+service/src/main/resources/generatorConfig.xml
 ### IntelliJ IDEA ###
 .idea
 *.iws
