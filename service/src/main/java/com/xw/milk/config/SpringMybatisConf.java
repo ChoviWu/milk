@@ -13,7 +13,6 @@ public class SpringMybatisConf {
 
     private static String MAPPERPATH = "com.xw.milk.mapper";
 
-//    private static String SQLSESSIONBEAN = "sqlSessionFactory";
 
     /**
      * Spring Mapper整合

@@ -28,9 +28,9 @@ spring:
      minimum-idle: 0
      sql-script-encoding: UTF-8
 
-  aop:
-    auto: true
-    proxy-target-class: false
+#  aop:
+#    auto: true
+#    proxy-target-class: false
 
 
   dubbo:

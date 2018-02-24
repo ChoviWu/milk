@@ -14,5 +14,5 @@ public interface BasProductService extends BaseService<BasProduct> {
 
     List<BasProduct> getList();
 
-    PageList getList(Paginator paginator);
+    PageList getListForPage(Paginator paginator);
 }

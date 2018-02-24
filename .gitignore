@@ -1,7 +1,9 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
-api/
+api/target/
+controller/target/
+service/target/
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -15,9 +17,9 @@ web.iml
 mvnw
 mvnw.cmd
 .mvn
-
-controller/src/main/java/com/xw/milk/controller/order/
-controller/src/main/java/com/xw/milk/controller/pay/
-controller/src/main/webapp/WEB-INF/jsp/main/user/
+#
+#controller/src/main/java/com/xw/milk/controller/order/
+#controller/src/main/java/com/xw/milk/controller/pay/
+#controller/src/main/webapp/WEB-INF/jsp/main/user/
 out/artifacts/controller_war_exploded/WEB-INF/
 service/src/test/

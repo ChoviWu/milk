@@ -32,6 +32,10 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
         return mapper.insert(entity);
     }
 
+    public int saveNotNull(T entity){
+        return mapper.insertSelective(entity);
+    }
+
     
     public int delete(Object key) {
         return mapper.deleteByPrimaryKey(key);

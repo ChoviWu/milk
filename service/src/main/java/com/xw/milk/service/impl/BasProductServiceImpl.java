@@ -21,11 +21,12 @@ public class BasProductServiceImpl extends BaseServiceImpl<BasProduct> implement
 
 
     @Override
-    public PageList getList(Paginator paginator) {
+    public PageList getListForPage(Paginator paginator) {
         PageHelper.startPage(paginator.getPageNum(), paginator.getPageSize());
-        List list = mapper.selectAll();
+        List<BasProduct> list = mapper.selectAll();
         return new PageList(list);
     }
+
     @Override
     public List<BasProduct> getList() {
         return mapper.selectAll();

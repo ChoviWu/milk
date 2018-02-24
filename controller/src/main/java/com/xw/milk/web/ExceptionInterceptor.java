@@ -43,17 +43,7 @@ public class ExceptionInterceptor implements HandlerInterceptor {
                 if(message==null || message=="")message= "系统繁忙";
                 msg.put("messageCode",code);
                 msg.put("messageText",message);
-            } if(ex instanceof Throwable){
-                Throwable throwable= ex.getCause();
-                if(throwable instanceof CrowdException){
-                    msg.put("result","fail");
-                    CrowdException exception = (CrowdException) throwable;
-                    String code=exception.getCode();
-                    String message  = ExceptionMessage.exceptionMessage.get(code);
-                    msg.put("messageCode",code);
-                    msg.put("messageText",message);
-                }
-            }else {
+            }  else {
                 msg.put("result", "fail");
                 msg.put("messageCode", "sys.error");
                 msg.put("messageText", "系统错误");

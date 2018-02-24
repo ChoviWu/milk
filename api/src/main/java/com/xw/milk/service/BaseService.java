@@ -11,6 +11,8 @@ public interface BaseService<T> {
 
     int save(T entity);
 
+    int saveNotNull(T entity);
+
     int delete(Object key);
 
     int updateAll(T entity);

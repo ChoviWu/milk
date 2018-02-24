@@ -1,6 +1,7 @@
 package com.xw.milk.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.xw.milk.annatation.LogLoginAnnotation;
 import com.xw.milk.common.Paginator;
 import com.xw.milk.model.BasProduct;
 import com.xw.milk.service.BasProductService;
@@ -26,16 +27,15 @@ public class IndexController {
 
     @Reference(version = "1.0.0")
     private BasProductService productService;
-    @Reference
+    @Reference(version = "1.0.0")
     private BasUserService userService;
 
+    @ResponseBody
     @RequestMapping("")
     public Object index( Model model,HttpServletRequest request,Paginator p){
 
-        model.addAttribute("productList",productService.getList(p));
-        Object obj = request.getSession().getAttribute("user");
-        if(StringUtils.isEmpty(obj))
-            return "redirect:/login";
-        return "main/index";
+
+        return productService.getListForPage(p);
+
     }
 }

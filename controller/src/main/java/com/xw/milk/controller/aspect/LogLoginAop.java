@@ -1,6 +1,9 @@
-//package com.xw.milk.service.aop;
+//package com.xw.milk.controller.aspect;
 //
-//import com.xw.milk.annotation.LogLoginAnnotation;
+//import com.alibaba.dubbo.config.annotation.Reference;
+//import com.xw.milk.annatation.LogLoginAnnotation;
+//import com.xw.milk.model.SysLog;
+//import com.xw.milk.service.SysLogService;
 //import com.xw.milk.util.AssertUtil;
 //import com.xw.milk.util.JsonUtils;
 //import org.aspectj.lang.ProceedingJoinPoint;
@@ -8,9 +11,7 @@
 //import org.aspectj.lang.annotation.Aspect;
 //import org.aspectj.lang.annotation.Pointcut;
 //import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.context.annotation.ComponentScan;
 //import org.springframework.stereotype.Component;
-//import org.springframework.stereotype.Service;
 //
 //import java.util.Date;
 //
@@ -22,10 +23,10 @@
 //@Component
 //public class LogLoginAop {
 //
-//    @Autowired
-//    SysLogMapper logMapper;
+//    @Reference(version = "1.0.0")
+//    SysLogService logService;
 //
-//    @Pointcut(value = "@annotation(com.xw.milk.annotation.LogLoginAnnotation)")
+//    @Pointcut(value = "@annotation(com.xw.milk.annatation.LogLoginAnnotation)")
 //    public void pointCut(){}
 //
 //
@@ -41,7 +42,7 @@
 //        log.setMethod(method);
 //        log.setModule(moduleName);
 //        log.setAddtime(time);
-//        AssertUtil.isTrue(logMapper.insertSelective(log)==1,"insert_error");
+//        AssertUtil.isTrue(logService.save(log)==1,"insert_error");
 //
 //       return pjp.proceed();
 //    }

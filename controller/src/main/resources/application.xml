@@ -26,24 +26,17 @@
     </context:component-scan>
     <context:annotation-config/>
 
-    <!-- aspect驱动 ,启用面向切面编程注解驱动-->
-    <!--<aop:aspectj-autoproxy />-->
-
-    <!--<mvc:annotation-driven conversion-service="conversionService" />-->
-
-    <!-- 取消对静态资源的解释 -->
 
 
-    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+     <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
     <dubbo:application name="webClient" />
     <!-- 使用multicast广播注册中心暴露发现服务地址 -->
 
-    <dubbo:registry  protocol="zookeeper" address="localhost:2181"   timeout="30000"/>
-    <dubbo:consumer version="1.0.0" check="false" timeout="30000"/>
+    <dubbo:consumer version="1.0.0" check="false"/>
 
     <dubbo:annotation />
 
-    <!--<dubbo:service interface="com.xw.milk.service.BasProductService" ref="basProductService"/>-->
+    <dubbo:registry  protocol="zookeeper" address="localhost:2181" />
 
 </beans>
 	
