@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xw.milk.mapper.BasUserMapper" >
+  <resultMap id="BaseResultMap" type="com.xw.milk.model.BasUser" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="salt" property="salt" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="INTEGER" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="record_time" property="recordTime" jdbcType="TIMESTAMP" />
+    <result column="last_login_city" property="lastLoginCity" jdbcType="VARCHAR" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="record_addr" property="recordAddr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, user_name as userName, password, salt, phone, user_type as userType,
+    open_id as openId, record_time as recordTime, last_login_city as lastLoginCity,
+    last_login_time as lastLoginTime, record_addr as recordAddr
+  </sql>
+
+  <select id="getList" parameterType="Map" resultType="com.xw.milk.model.BasUser">
+    SELECT <include refid="Base_Column_List"/>
+    FROM  bas_user
+    <where>
+      <if test="username!=null and username!=''">
+        and  user_name = #{username}
+      </if>
+     <if test="phone!=null and phone!=''">
+       and phone = #{phone}
+      </if>
+     <if test="type!=null and type!=''">
+       and user_type = #{type}
+      </if>
+    </where>
+  </select>
+  <!--修改用户类型-->
+  <update id="modifyUserType" parameterType="Map" >
+    UPDATE bas_user u set user_type = #{newType} where u.id = #{userId} and u.open_id = #{openId}
+  </update>
+
+  <!--注册用户-->
+
+  <insert id="registerUser" parameterType="map" keyProperty="id" useGeneratedKeys="true">
+    INSERT INTO bas_user(open_id ,user_type ,last_login_time,record_addr)
+    VALUES (#{openId},#{type},#{ip},#{time},#{ip})
+  </insert>
+
+  <!--更新用户名-->
+  <update id="updateUserName" >
+    UPDATE bas_user u
+    <set>
+      u.user_name = #{username}
+    </set>
+    where u.id = #{userId}
+  </update>
+
+  <select id="getUserByOpenId" parameterType="map" resultType="com.xw.milk.model.VO.BasUserVO">
+    SELECT <include refid="Base_Column_List"/>
+    ,wx.groupid as groupId,wx.head_img_url as headImgUrl,wx.nick_name as nickName
+    from bas_user u LEFT JOIN bas_wx wx ON wx.open_id = u.open_id
+    <where>
+      <if test="openId!=null and openId!=''">
+        and open_id = #{openId}
+      </if>
+      <if test="id!=null and id>0">
+        and u.id = #{id}
+      </if>
+
+    </where>
+  </select>
+
+  <update id="bindphone" parameterType="Map">
+    UPDATE bas_user u SET  u.phone = #{phone}
+  <where>
+    <choose >
+     <when test="userId!=null and userId>0">
+        u.id = #{userId}
+     </when>
+      <when test="openId!=null and openId!=''">
+        u.open_id = #{openId}
+      </when>
+    </choose>
+  </where>
+  </update>
+
+
+  <select id="getUserByphone" parameterType="String" resultType="com.xw.milk.model.BasUser">
+    SELECT <include refid="Base_Column_List"/>
+    FROM bas_user u WHERE phone = #{phone} ORDER  record_time desc  limit 1
+  </select>
+
+
+  <select id="getUserByUserName" parameterType="String" resultType="com.xw.milk.model.BasUser">
+    SELECT <include refid="Base_Column_List"/>
+    FROM bas_user u WHERE user_name = #{username} ORDER  record_time desc limit 1
+  </select>
+
+
+</mapper>

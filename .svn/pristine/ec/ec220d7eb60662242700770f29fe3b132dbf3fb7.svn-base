@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xw.milk.mapper.BasUserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.xw.milk.model.BasUserInfo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="receiver_phone" property="receiverPhone" jdbcType="VARCHAR" />
+    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+    <result column="shipping_addr" property="shippingAddr" jdbcType="LONGVARCHAR" />
+    <result column="shipping_addr1" property="shippingAddr1" jdbcType="LONGVARCHAR" />
+    <result column="shipping_addr2" property="shippingAddr2" jdbcType="LONGVARCHAR" />
+    <result column="receiver_name" property="receiverName" jdbcType="LONGVARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, user_id as userId, receiver_phone as receiverPhone,
+    addtime,shipping_addr as shippingAddr, shipping_addr1 as shippingAddr1,
+    shipping_addr2 as shippingAddr2, receiver_name as receiverName
+  </sql>
+
+</mapper>

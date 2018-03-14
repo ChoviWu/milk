@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xw.milk.mapper.BasWxMapper">
+  <resultMap id="BaseResultMap" type="com.xw.milk.model.BasWx">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="head_img_url" jdbcType="VARCHAR" property="headImgUrl" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="groupid" jdbcType="INTEGER" property="groupid" />
+    <result column="tagid_list" jdbcType="VARCHAR" property="tagidList" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, open_id as openId, nick_name as nickName, sex, province, city,
+    country, head_img_url as headImgUrl, remark, groupid,
+    tagid_list as tagidList
+  </sql>
+
+  <select id="getOneByOpenId" parameterType="String" resultType="BasWx">
+    SELECT <include refid="Base_Column_List"/>
+    FROM bas_wx WHERE open_id = #{openId}
+
+  </select>
+</mapper>

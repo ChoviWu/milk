@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xw.milk.mapper.BizOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.xw.milk.model.BizOrder" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="order_money" property="orderMoney" jdbcType="DECIMAL" />
+    <result column="reduced_price" property="reducedPrice" jdbcType="DECIMAL" />
+    <result column="receiver_name" property="receiverName" jdbcType="VARCHAR" />
+    <result column="receiver_phone" property="receiverPhone" jdbcType="VARCHAR" />
+    <result column="shipping_time" property="shippingTime" jdbcType="TIMESTAMP" />
+    <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.xw.milk.model.BizOrder" extends="BaseResultMap" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <result column="shipping_addr" property="shippingAddr" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, order_id, user_id, order_status, order_money, reduced_price, receiver_name, receiver_phone, 
+    shipping_time, order_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    shipping_addr
+  </sql>
+</mapper>
