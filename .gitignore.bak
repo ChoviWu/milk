@@ -5,7 +5,7 @@ api/target/
 controller/target/
 service/target/
 =======
-api/s
+api/src/main/java/com/xw/milk/
 service/src/main/resources/generatorConfig.xml
 ### IntelliJ IDEA ###
 .idea
@@ -21,5 +21,8 @@ mvnw
 mvnw.cmd
 .mvn
 #
+#controller/src/main/java/com/xw/milk/controller/order/
+#controller/src/main/java/com/xw/milk/controller/pay/
+#controller/src/main/webapp/WEB-INF/jsp/main/user/
 out/artifacts/controller_war_exploded/WEB-INF/
 service/src/test/
