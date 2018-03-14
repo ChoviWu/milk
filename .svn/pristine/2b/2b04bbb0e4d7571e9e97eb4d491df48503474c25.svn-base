@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: dell
-Implementation-Vendor-Id: com.xw.milk
-Created-By: IntelliJ IDEA
-Build-Jdk: 9.0.1
-Main-Class: ${start-class}
-

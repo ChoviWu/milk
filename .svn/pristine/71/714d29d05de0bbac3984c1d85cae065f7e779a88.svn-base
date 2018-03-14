@@ -1,9 +1,0 @@
-jdbc.url=jdbc:mysql://${jdbc.url}/${jdbc.db}?useUnicode=true&characterEncoding=utf8&autoReconnect=true
-jdbc.user=${jdbc.user}
-jdbc.password=${jdbc.password}
-#jdbc.driver=com.mysql.jdbc.Driver
-jdbc.initialSize=5
-jdbc.minIdle=1
-jdbc.maxActive=10
-jdbc.filters=stat
-

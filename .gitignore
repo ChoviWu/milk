@@ -4,8 +4,6 @@ arget/
 api/target/
 controller/target/
 service/target/
-=======
-api/s
 service/src/main/resources/generatorConfig.xml
 ### IntelliJ IDEA ###
 .idea
@@ -21,5 +19,9 @@ mvnw
 mvnw.cmd
 .mvn
 #
-out/artifacts/controller_war_exploded/WEB-INF/
-service/src/test/
+#out/artifacts/controller_war_exploded/WEB-INF/
+#service/src/test/
+#.svn/tmp/
+#xingwang-api/target/generated-sources/
+#xingwang-service/target/generated-sources/
+#xingwang-web/target/generated-sources/
