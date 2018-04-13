@@ -27,10 +27,10 @@
 			<id>test</id>
 
 			<properties>
-				<jdbc.url>120.78.166.147:3306</jdbc.url>
-				<jdbc.db>milk</jdbc.db>
-				<jdbc.user>root</jdbc.user>
-				<jdbc.password>root</jdbc.password>
+				<jdbc.url>xxx:3306</jdbc.url>
+				<jdbc.db>xxx</jdbc.db>
+				<jdbc.user>xxx</jdbc.user>
+				<jdbc.password>xx</jdbc.password>
 				<dubbo.url>localhost:2181</dubbo.url>
 				<dubbo.host>20880</dubbo.host>
 			</properties>
@@ -38,10 +38,10 @@
 		<profile>
 			<id>dev</id>
 			<properties>
-				<jdbc.url>120.78.166.147:3306</jdbc.url>
-				<jdbc.db>milk</jdbc.db>
-				<jdbc.user>root</jdbc.user>
-				<jdbc.password>root</jdbc.password>
+				<jdbc.url>xxx:3306</jdbc.url>
+				<jdbc.db>xx</jdbc.db>
+				<jdbc.user>xx</jdbc.user>
+				<jdbc.password>xx</jdbc.password>
 				<dubbo.url>localhost:2181</dubbo.url>
 				<dubbo.host>20880</dubbo.host>
 				<!--<dubbo.url>172.18.132.249:2181</dubbo.url>-->
